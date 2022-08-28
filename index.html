@@ -116,15 +116,16 @@
         });
 
         sig.bind("clickNode", function (e) {
-          var property = e.data.node.properties;
-          console.log(property);
-          // create the tlis tof prop. from returend Object
+          var nodeProperty = e.data.node.properties;
           $("#properties").empty();
-          for (var key in property) {
-            console.log(key);
-            $("#properties").append(
-              " <li>" + key + " : " + property[key] + "</li>"
-            );
+          if (nodeProperty) {
+            for (var key in nodeProperty) {
+              $("#properties").append(
+                " <li>" + key + " : " + nodeProperty[key] + "</li>"
+              );
+            }
+          } else {
+            $("#properties").append("There is no properties");
           }
         });
 
